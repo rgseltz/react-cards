@@ -35,7 +35,7 @@ const CardPicker = () => {
         async function pickCard() {
             const cardRes = await Axios.get(cardUrl);
             console.log(cardRes)
-            setCards([...cards, cardRes])
+            setCards([...cards, cardRes.data.cards[0]])
         } 
         pickCard();
         return () => setGetCard(true)
@@ -51,7 +51,7 @@ const CardPicker = () => {
         <h1>Card Picker!</h1>
         {/* <button onClick={shuffleDeck}>New Deck</button> */}
         <button onClick={handlePick}>Pick Card</button>
-        {cards ? cards.map(c => <Card info={c.cards} />) : null}
+        {cards ? <section> {cards.map(c => <Card info={c}/>)}</section> : null}
         </div>
     )
 }

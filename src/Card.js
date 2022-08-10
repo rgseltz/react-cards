@@ -1,8 +1,17 @@
 import React, {useState} from "react";
 
-const Card = ({pick}) => {
+const Card = ({info}) => {
     return (
-        <h1>YOUR CARD!</h1>
+        <>
+            
+            
+                    <img 
+                    src={info.image}
+                    data-value={info.value}
+                    data-suit={info.suit}
+                    />
+            
+        </>
     )
 }
 
