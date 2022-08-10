@@ -1,5 +1,6 @@
 import React from 'react';
 import CardPicker from './CardPicker';
+import CardTimer from './CardTimer';
 import './App.css';
 
 function App() {
