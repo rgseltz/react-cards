@@ -6,7 +6,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <CardPicker />
+      {/* <CardPicker /> */}
+      <CardTimer />
     </div>
   );
 }
