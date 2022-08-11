@@ -32,7 +32,7 @@ const CardTimer = () => {
                 const cardRes = await Axios.get(`http://deckofcardsapi.com/api/deck/${deck}/draw`)
                 const cardData = cardRes.data.cards
                 console.log(cardRes.data.cards)
-                setCards([...cardData]);
+                setCards(card => [...card ,...cardData]);
             }
             console.log(cards)
     
