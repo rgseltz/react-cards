@@ -9,7 +9,7 @@ const CardTimer = () => {
     const [isTimer, setIsTimer] = useState(false);
     const [cards, setCards] = useState([]);
     const autoPick = useRef()
-
+    /**on mount get deck from api */
     useEffect(() => {
         async function getDeck() {
             const res = await Axios.get(`${BASE_URL}/new/shuffle/`)
@@ -18,12 +18,13 @@ const CardTimer = () => {
         getDeck();
     }, [])
     console.log(deck)
-
+    /**handles draw button - makes api req for new card and toggles timer*/
     const handleClick = () => {
         pickCard();
         toggleTimer()
         
     }
+    /**boolean that is toggled together with timer */
     const toggleTimer = () => {
         setIsTimer(!isTimer)
     }
@@ -34,7 +35,6 @@ const CardTimer = () => {
                 console.log(cardRes.data.cards)
                 setCards(card => [...card ,...cardData]);
             }
-            console.log(cards)
     
     useEffect(() => {
         if (!isTimer) {
@@ -51,7 +51,7 @@ const CardTimer = () => {
     <div>
         <h1>CardTimer!</h1>
         <button onClick={handleClick}>Start Card Timer</button>
-        {isTimer && <section>{cards.map(c => <Card info={c}/>)}</section>}
+        {isTimer && <section>{cards.map(c => <Card key={c.code} info={c}/>)}</section>}
     </div>
 
     )
