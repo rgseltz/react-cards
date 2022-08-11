@@ -41,8 +41,11 @@ const CardTimer = () => {
             return;}
         autoPick.current = setInterval(async () => {
             await pickCard();
-        }, 1000)
-    },[isTimer])
+        }, 1000);
+        return () => { clearInterval(autoPick.current);
+        autoPick.current=null};
+    }
+    ,[isTimer])
 
     return (
     <div>
